@@ -16,7 +16,7 @@ export default function Home() {
   }, [user, loading, router]);
 
   return (
-    <div className="min-h-screen vsc-grid place-items-center">
+    <div className="min-h-screen grid place-items-center">
       <Spinner />
     </div>
   );

@@ -1,14 +1,31 @@
 services:
-  postgres:
-    image: postgres:15-alpine
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: railway_db
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
     ports:
-      - "5432:5432"
+      - "5050:5050"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./backend/instance:/app/backend/instance
+      - ./backend/uploads:/app/backend/uploads
+    environment:
+      - FLASK_HOST=0.0.0.0
+      - FLASK_PORT=5050
+      - SUMO_BINARY=sumo
+    # Uncomment if you want to pass API keys via environment variables instead of a .env file
+    # env_file:
+    #   - ./backend/.env
 
-volumes:
-  postgres_data:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - BACKEND_URL=http://backend:5050
+    # Uncomment if you have a .env file for Mapbox keys
+    # env_file:
+    #   - ./frontend/.env
