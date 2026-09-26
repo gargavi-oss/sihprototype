@@ -20,3 +20,12 @@ eclipse-sumo>=1.27
 traci>=1.27
 sumolib>=1.27
 matplotlib>=3.8
+
+# Data & Infrastructure
+psycopg2-binary>=2.9
+redis>=5.0
+Flask-Migrate>=4.0
+celery>=5.3
+Flask-SocketIO>=5.3
+Flask-JWT-Extended>=4.5
+flasgger>=0.9

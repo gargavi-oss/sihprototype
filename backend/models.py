@@ -33,9 +33,44 @@ class User(db.Model):
     username = db.Column(db.String(64), unique=True, nullable=False)
     password_hash = db.Column(db.String(256), nullable=False)
     full_name = db.Column(db.String(120), nullable=False)
-    role = db.Column(db.String(16), nullable=False)  # tms | smms | tdms | coa | planner
+    # tms | smms | tdms | coa | planner
+    role = db.Column(db.String(16), nullable=False)
     designation = db.Column(db.String(120), nullable=True)
     created_at = db.Column(db.DateTime, default=_now)
+
+    def __init__(
+        self,
+        username=None,
+        full_name=None,
+        role=None,
+        designation=None,
+        name=None,
+        desig=None,
+        **kwargs,
+    ):
+        super().__init__(**kwargs)
+        if username is not None:
+            self.username = username
+        self.full_name = full_name or name or ""
+        if role is not None:
+            self.role = role
+        self.designation = designation or desig
+
+    @property
+    def name(self):
+        return self.full_name
+
+    @name.setter
+    def name(self, val):
+        self.full_name = val
+
+    @property
+    def desig(self):
+        return self.designation
+
+    @desig.setter
+    def desig(self, val):
+        self.designation = val
 
     def set_password(self, pw):
         self.password_hash = generate_password_hash(pw)
@@ -110,7 +145,10 @@ class _UploadMixin:
             "filename": self.filename,
             "row_count": self.row_count,
             "uploaded_by": self.uploaded_by,
-            "uploaded_at": self.uploaded_at.isoformat() + "Z" if self.uploaded_at else None,
+            "uploaded_at": (
+                self.uploaded_at.isoformat() + "Z"
+                if self.uploaded_at else None
+            ),
             "is_active": self.is_active,
             "note": self.note,
             **({"kind": self.kind} if hasattr(self, "kind") else {}),
@@ -147,7 +185,9 @@ class TmsUpload(db.Model, _UploadMixin):
 class TmsRequest(db.Model, _BlockRequestMixin):
     __bind_key__ = "tms"
     __tablename__ = "tms_block_requests"
-    upload_id = db.Column(db.Integer, db.ForeignKey("tms_uploads.id"), index=True)
+    upload_id = db.Column(
+        db.Integer, db.ForeignKey("tms_uploads.id"), index=True
+    )
 
 
 # Signal & Telecom – SMMS
@@ -159,7 +199,9 @@ class SmmsUpload(db.Model, _UploadMixin):
 class SmmsRequest(db.Model, _BlockRequestMixin):
     __bind_key__ = "smms"
     __tablename__ = "smms_block_requests"
-    upload_id = db.Column(db.Integer, db.ForeignKey("smms_uploads.id"), index=True)
+    upload_id = db.Column(
+        db.Integer, db.ForeignKey("smms_uploads.id"), index=True
+    )
 
 
 # Traction Distribution – TDMS
@@ -171,7 +213,9 @@ class TdmsUpload(db.Model, _UploadMixin):
 class TdmsRequest(db.Model, _BlockRequestMixin):
     __bind_key__ = "tdms"
     __tablename__ = "tdms_block_requests"
-    upload_id = db.Column(db.Integer, db.ForeignKey("tdms_uploads.id"), index=True)
+    upload_id = db.Column(
+        db.Integer, db.ForeignKey("tdms_uploads.id"), index=True
+    )
 
 
 # Control Office – timetable + delay forecast
@@ -186,7 +230,9 @@ class CoaTimetable(db.Model):
     __bind_key__ = "coa"
     __tablename__ = "coa_timetable"
     id = db.Column(db.Integer, primary_key=True)
-    upload_id = db.Column(db.Integer, db.ForeignKey("coa_uploads.id"), index=True)
+    upload_id = db.Column(
+        db.Integer, db.ForeignKey("coa_uploads.id"), index=True
+    )
     train_id = db.Column(db.Integer, nullable=False)
     engine_type = db.Column(db.String(4), nullable=False)
     category = db.Column(db.Integer, nullable=False)
@@ -213,12 +259,19 @@ class CoaDelay(db.Model):
     __bind_key__ = "coa"
     __tablename__ = "coa_delays"
     id = db.Column(db.Integer, primary_key=True)
-    upload_id = db.Column(db.Integer, db.ForeignKey("coa_uploads.id"), index=True)
+    upload_id = db.Column(
+        db.Integer, db.ForeignKey("coa_uploads.id"), index=True
+    )
     train_id = db.Column(db.Integer, nullable=False)
     delay = db.Column(db.Integer, nullable=False)
 
     def to_dict(self):
-        return {"id": self.id, "upload_id": self.upload_id, "train_id": self.train_id, "delay": self.delay}
+        return {
+            "id": self.id,
+            "upload_id": self.upload_id,
+            "train_id": self.train_id,
+            "delay": self.delay,
+        }
 
 
 def _route_summary(slots):
@@ -267,18 +320,35 @@ DEPARTMENTS = {
 
 SEED_USERS = [
     # username, password, full name, role, designation
-    ("tms", "tms123", "Engineering Department", "tms", "Sr. Section Engineer (P.Way)"),
-    ("smms", "smms123", "Signal & Telecom Department", "smms", "Sr. Section Engineer (Signal)"),
-    ("tdms", "tdms123", "Traction Distribution Department", "tdms", "Sr. Section Engineer (TRD)"),
+    (
+        "tms", "tms123", "Engineering Department", "tms",
+        "Sr. Section Engineer (P.Way)"
+    ),
+    (
+        "smms", "smms123", "Signal & Telecom Department", "smms",
+        "Sr. Section Engineer (Signal)"
+    ),
+    (
+        "tdms", "tdms123", "Traction Distribution Department", "tdms",
+        "Sr. Section Engineer (TRD)"
+    ),
     ("coa", "coa123", "Control Office", "coa", "Chief Controller"),
-    ("planner", "planner123", "Block Planning Cell", "planner", "Sr. Divisional Operations Manager"),
+    (
+        "planner", "planner123", "Block Planning Cell", "planner",
+        "Sr. Divisional Operations Manager"
+    ),
 ]
 
 
 def seed_users():
     for username, pw, name, role, desig in SEED_USERS:
         if not User.query.filter_by(username=username).first():
-            u = User(username=username, full_name=name, role=role, designation=desig)
+            u = User(
+                username=username,
+                full_name=name,
+                role=role,
+                designation=desig,
+            )
             u.set_password(pw)
             db.session.add(u)
     db.session.commit()
