@@ -1,0 +1,22 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Secrets
+.env
+!.env.example
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+
+# Runtime data
+backend/instance/
+backend/uploads/
+*.npy.bak
+
+# OS
+.DS_Store
+__MACOSX/
+Thumbs.db

@@ -1,0 +1,303 @@
+================================================================================
+SCHEDULED TIMETABLE VIEW (T[n, i, k, t])
+Train (i)    | Depart (t)   | Route
+--------------------------------------------------------------------------------
+train_001    | 00:00        | STN_A -> STN_D
+train_002    | 00:00        | STN_A -> STN_D
+train_003    | 00:00        | STN_A -> STN_C
+train_004    | 00:00        | STN_A -> STN_D -> STN_F
+train_005    | 00:00        | STN_A -> STN_E
+train_006    | 00:00        | STN_B -> STN_D -> STN_F
+train_007    | 00:00        | STN_B -> STN_C
+train_008    | 00:00        | STN_B -> STN_D -> STN_F
+train_009    | 00:00        | STN_B -> STN_D
+train_010    | 00:00        | STN_B -> STN_D -> STN_F
+train_016    | 00:00        | STN_B -> STN_D -> STN_F
+train_017    | 00:10        | STN_B -> STN_C
+train_019    | 02:20        | STN_B -> STN_C
+train_015    | 04:10        | STN_A -> STN_D -> STN_F
+train_013    | 04:40        | STN_A -> STN_D
+train_020    | 04:50        | STN_A -> STN_E
+train_014    | 05:30        | STN_A -> STN_D -> STN_F
+train_011    | 06:20        | STN_A -> STN_E
+train_018    | 07:00        | STN_A -> STN_C
+train_012    | 09:20        | STN_B -> STN_C
+================================================================================
+PS C:\Users\Trinesh Varma\Desktop\sumo\spiderweb_network\scripts> python run_simulation.py
+***Starting server on port 51613 ***
+Loading net-file from '../config/../network/network.net.xml' ... done (11ms).
+Loading additional-files from '../config/additional.add.xml' ... done (2ms).
+Loading route-files incrementally from '../config/routes.rou.xml'
+Loading done.
+Simulation version 1.27.1 started with time: 0.00.
+Step #0.00Edge mapping built: 162 edges mapped to 81 global sections
+
+Scheduled 10 maintenance events:
+  Block R4_S9: 1496s - 2107s (611s)
+  Block R3_S9: 1719s - 2335s (616s)
+  Block R5_S1: 531s - 918s (387s)
+  Block R6_S6: 3795s - 4516s (721s)
+  Block R4_S9: 4503s - 5615s (1112s)
+  Block R7_S2: 247s - 1106s (859s)
+  Block R5_S4: 2436s - 3342s (906s)
+  Block R5_S11: 1136s - 1810s (674s)
+  Block R5_S9: 3165s - 3963s (798s)
+  Block R5_S1: 4648s - 5492s (844s)
+[91s] Signal: Train train_002 instructed to STOP because R9_S2 is occupied (2-block rule / reserved).
+[91s] Signal: Train train_007 instructed to STOP because R10_S2 is occupied (2-block rule / reserved).
+[131s] Signal: Train train_002 cleared to proceed. TOT 4 ACT 4 BUF 6)
+[131s] Signal: Train train_007 cleared to proceed.
+[184s] Signal: Train train_003 instructed to STOP because R9_S2 is occupied (2-block rule / reserved).
+[184s] Signal: Train train_008 instructed to STOP because R10_S2 is occupied (2-block rule / reserved).
+[224s] Signal: Train train_003 cleared to proceed. TOT 6 ACT 6 BUF 4)
+[224s] Signal: Train train_008 cleared to proceed.
+
+[247s] MAINTENANCE ALERT: Block R7_S2 is now under service!
+[277s] Signal: Train train_004 instructed to STOP because R9_S2 is occupied (2-block rule / reserved).
+[277s] Signal: Train train_009 instructed to STOP because R10_S2 is occupied (2-block rule / reserved).
+[281s] Signal: Train train_006 instructed to STOP because R3_S1 is occupied (2-block rule / reserved).
+[314s] Signal: Train train_007 instructed to STOP because R2_S7 is occupied (2-block rule / reserved).
+[317s] Signal: Train train_004 cleared to proceed.
+[317s] Signal: Train train_009 cleared to proceed.
+[347s] Signal: Train train_008 instructed to STOP because R2_S5 is occupied (2-block rule / reserved).
+[370s] Signal: Train train_005 instructed to STOP because R9_S2 is occupied (2-block rule / reserved).
+[370s] Signal: Train train_010 instructed to STOP because R10_S2 is occupied (2-block rule / reserved).
+[379s] Signal: Train train_009 instructed to STOP because R2_S3 is occupied (2-block rule / reserved).
+Warning: Route file should be sorted by departure time, ignoring 'train_013'!
+Warning: Route file should be sorted by departure time, ignoring 'train_014'!
+Warning: Route file should be sorted by departure time, ignoring 'train_015'!
+Warning: Route file should be sorted by departure time, ignoring 'train_016'!
+Warning: Route file should be sorted by departure time, ignoring 'train_017'!
+Warning: Route file should be sorted by departure time, ignoring 'train_018'!
+Warning: Route file should be sorted by departure time, ignoring 'train_019'!
+Warning: Route file should be sorted by departure time, ignoring 'train_020'!
+[410s] Signal: Train train_005 cleared to proceed. TOT 10 ACT 10 BUF 1)
+[463s] Signal: Train train_011 instructed to STOP because R9_S2 is occupied (2-block rule / reserved).
+[503s] Signal: Train train_011 cleared to proceed. TOT 11 ACT 11 BUF 0)
+
+[531s] MAINTENANCE ALERT: Block R5_S1 is now under service!
+Warning: Teleporting vehicle 'train_006'; waited too long (yield), lane='R2_S7_0', time=604.00.
+Warning: Vehicle 'train_006' ends teleporting on edge 'R3_S1', time=604.00.
+[604s] Signal: Train train_004 instructed to STOP because R3_S1 is occupied (2-block rule / reserved).
+[604s] Signal: Train train_007 cleared to proceed.
+[617s] Signal: Train train_006 cleared to proceed.
+[623s] Signal: Train train_005 instructed to STOP because R1_S8 is occupied (2-block rule / reserved).
+[640s] Signal: Train train_007 instructed to STOP because R3_S1 is occupied (2-block rule / reserved).
+[640s] Signal: Train train_008 cleared to proceed.
+[641s] Signal: Train train_006 instructed to STOP because R3_S4 is occupied (2-block rule / reserved).
+[641s] Signal: Train train_007 cleared to proceed.
+[647s] Signal: Train train_006 cleared to proceed.
+[656s] Signal: Train train_011 instructed to STOP because R1_S6 is occupied (2-block rule / reserved).
+[670s] Signal: Train train_007 instructed to STOP because R3_S2 is occupied (2-block rule / reserved).
+[672s] Signal: Train train_001 instructed to STOP because R5_S1 is occupied (2-block rule / reserved).
+[673s] Signal: Train train_006 instructed to STOP because R3_S5 is occupied (2-block rule / reserved).
+[673s] Signal: Train train_004 cleared to proceed.
+[675s] Signal: Train train_009 cleared to proceed.
+[677s] Signal: Train train_006 cleared to proceed.
+[691s] Signal: Train train_005 cleared to proceed.
+[692s] Signal: Train train_004 instructed to STOP because R3_S3 is occupied (2-block rule / reserved).
+[704s] Signal: Train train_006 instructed to STOP because R3_S6 is occupied (2-block rule / reserved).
+[704s] Signal: Train train_004 cleared to proceed.
+[705s] Signal: Train train_002 instructed to STOP because R3_S12 is occupied (2-block rule / reserved).
+[705s] Signal: Train train_008 instructed to STOP because R2_S7 is occupied (2-block rule / reserved).
+[707s] Signal: Train train_006 cleared to proceed.
+[715s] Signal: Train train_010 cleared to proceed.
+[727s] Signal: Train train_005 instructed to STOP because R3_S1 is occupied (2-block rule / reserved).
+[727s] Signal: Train train_010 instructed to STOP because R2_S2 is occupied (2-block rule / reserved).
+[727s] Signal: Train train_011 cleared to proceed.
+[735s] Signal: Train train_006 instructed to STOP because R3_S7 is occupied (2-block rule / reserved).
+[737s] Signal: Train train_003 instructed to STOP because R3_S10 is occupied (2-block rule / reserved).
+[737s] Signal: Train train_006 cleared to proceed.
+[745s] Signal: Train train_009 instructed to STOP because R2_S5 is occupied (2-block rule / reserved).
+[745s] Signal: Train train_010 cleared to proceed.
+[746s] Signal: Train train_005 cleared to proceed.
+[755s] Signal: Train train_012 instructed to STOP because R10_S2 is occupied (2-block rule / reserved).
+[762s] Signal: Train train_011 instructed to STOP because R1_S7 is occupied (2-block rule / reserved).
+[765s] Signal: Train train_006 instructed to STOP because R3_S8 is occupied (2-block rule / reserved).
+[767s] Signal: Train train_010 instructed to STOP because R2_S3 is occupied (2-block rule / reserved).
+[777s] Signal: Train train_011 cleared to proceed.
+[805s] Signal: Train train_011 instructed to STOP because R1_S8 is occupied (2-block rule / reserved).
+[806s] Signal: Train train_004 instructed to STOP because R3_S6 is occupied (2-block rule / reserved).
+[807s] Signal: Train train_011 cleared to proceed.
+[835s] Signal: Train train_011 instructed to STOP because R3_S1 is occupied (2-block rule / reserved).
+[837s] Signal: Train train_005 instructed to STOP because R3_S4 is occupied (2-block rule / reserved).
+[837s] Signal: Train train_011 cleared to proceed.
+[866s] Signal: Train train_011 instructed to STOP because R3_S2 is occupied (2-block rule / reserved).
+Step #900.00 (1ms ~= 1000.00*RT, ~12000.00UPS, TraCI: 2ms, vehicles TOT 12 ACT 12 BUF 0)
+[918s] MAINTENANCE CLEARED: Block R5_S1 service complete.
+[918s] Signal: Train train_001 cleared to proceed.
+[954s] Signal: Train train_002 cleared to proceed.
+[989s] Signal: Train train_003 cleared to proceed.
+Warning: Teleporting vehicle 'train_007'; waited too long (jam), lane='R2_S7_0', time=993.00.
+Warning: Vehicle 'train_007' ends teleporting on edge 'R3_S1', time=993.00.
+[993s] Signal: Train train_008 cleared to proceed.
+[1025s] Signal: Train train_006 cleared to proceed. TOT 12 ACT 12 BUF 0)
+[1029s] Signal: Train train_008 instructed to STOP because R3_S1 is occupied (2-block rule / reserved).
+[1029s] Signal: Train train_009 cleared to proceed.
+[1060s] Signal: Train train_004 cleared to proceed.
+[1064s] Signal: Train train_009 instructed to STOP because R2_S6 is occupied (2-block rule / reserved).
+[1064s] Signal: Train train_010 cleared to proceed.
+[1095s] Signal: Train train_005 cleared to proceed.
+Step #1100.00 (0ms ?*RT. ?UPS, TraCI: 2ms, vehicles TOT 12 ACT 12 BUF 0)
+[1106s] MAINTENANCE CLEARED: Block R7_S2 service complete.
+[1106s] Signal: Train train_010 instructed to STOP because R2_S4 is occupied (2-block rule / reserved).
+[1106s] Signal: Train train_012 cleared to proceed.
+[1118s] Signal: Train train_012 instructed to STOP because R2_S2 is occupied (2-block rule / reserved).
+
+[1136s] MAINTENANCE ALERT: Block R5_S11 is now under service!
+[1161s] Signal: Train train_007 cleared to proceed.
+Warning: Teleporting vehicle 'train_011'; waited too long (jam), lane='R1_S8_0', time=1189.00.
+Warning: Vehicle 'train_011' ends teleporting on edge 'R3_S1', time=1189.00.
+[1224s] Signal: Train train_001 instructed to STOP because R5_S11 is occupied (2-block rule / reserved).
+[1254s] Signal: Train train_011 cleared to proceed.
+[1260s] Signal: Train train_002 instructed to STOP because R5_S9 is occupied (2-block rule / reserved).
+[1290s] Signal: Train train_008 cleared to proceed.
+[1296s] Signal: Train train_003 instructed to STOP because R5_S7 is occupied (2-block rule / reserved).
+[1326s] Signal: Train train_009 cleared to proceed. TOT 12 ACT 12 BUF 0)
+[1331s] Signal: Train train_006 instructed to STOP because R5_S5 is occupied (2-block rule / reserved).
+[1362s] Signal: Train train_010 cleared to proceed.
+[1366s] Signal: Train train_004 instructed to STOP because R5_S3 is occupied (2-block rule / reserved).
+[1398s] Signal: Train train_012 cleared to proceed.
+[1420s] Signal: Train train_012 instructed to STOP because R2_S3 is occupied (2-block rule / reserved).
+[1428s] Signal: Train train_012 cleared to proceed.
+[1464s] Signal: Train train_007 instructed to STOP because R3_S13 is occupied (2-block rule / reserved).
+[1465s] Signal: Train train_007 cleared to proceed.
+[1494s] Signal: Train train_007 instructed to STOP because R5_S1 is occupied (2-block rule / reserved).
+
+[1496s] MAINTENANCE ALERT: Block R4_S9 is now under service!
+[1530s] Signal: Train train_011 instructed to STOP because R3_S12 is occupied (2-block rule / reserved).
+Warning: Teleporting vehicle 'train_001'; waited too long (jam), lane='R5_S9_0', time=1547.00.
+Warning: Vehicle 'train_001' ends teleporting on edge 'R5_S10', time=1547.00.
+[1547s] Signal: Train train_002 cleared to proceed.
+[1566s] Signal: Train train_008 instructed to STOP because R3_S10 is occupied (2-block rule / reserved).
+[1582s] Signal: Train train_002 instructed to STOP because R5_S10 is occupied (2-block rule / reserved).
+[1582s] Signal: Train train_003 cleared to proceed.
+[1602s] Signal: Train train_009 instructed to STOP because R3_S8 is occupied (2-block rule / reserved).
+[1617s] Signal: Train train_003 instructed to STOP because R5_S8 is occupied (2-block rule / reserved).
+[1617s] Signal: Train train_006 cleared to proceed.
+[1638s] Signal: Train train_010 instructed to STOP because R3_S6 is occupied (2-block rule / reserved).
+[1653s] Signal: Train train_006 instructed to STOP because R5_S6 is occupied (2-block rule / reserved).
+[1653s] Signal: Train train_004 cleared to proceed.
+[1654s] Signal: Train train_005 instructed to STOP because R4_S9 is occupied (2-block rule / reserved).
+[1673s] Signal: Train train_012 instructed to STOP because R3_S4 is occupied (2-block rule / reserved).
+[1689s] Signal: Train train_004 instructed to STOP because R5_S4 is occupied (2-block rule / reserved).
+[1689s] Signal: Train train_007 cleared to proceed.
+Step #1700.00 (0ms ?*RT. ?UPS, TraCI: 2ms, vehicles TOT 12 ACT 12 BUF 0)
+[1719s] MAINTENANCE ALERT: Block R3_S9 is now under service!
+[1725s] Signal: Train train_007 instructed to STOP because R5_S2 is occupied (2-block rule / reserved).
+[1725s] Signal: Train train_011 cleared to proceed.
+[1761s] Signal: Train train_011 instructed to STOP because R3_S13 is occupied (2-block rule / reserved).
+Step #1800.00 (0ms ?*RT. ?UPS, TraCI: 3ms, vehicles TOT 12 ACT 12 BUF 0)
+[1810s] MAINTENANCE CLEARED: Block R5_S11 service complete.
+[1810s] Signal: Train train_001 cleared to proceed.
+[1843s] Signal: Train train_002 cleared to proceed.
+[1879s] Signal: Train train_003 cleared to proceed.
+Warning: Teleporting vehicle 'train_008'; waited too long (jam), lane='R3_S8_0', time=1889.00.
+Warning: Vehicle 'train_008' ends teleporting on edge 'R3_S9', time=1889.00.
+[1889s] Signal: Train train_009 cleared to proceed.
+[1915s] Signal: Train train_006 cleared to proceed. TOT 12 ACT 12 BUF 0)
+[1925s] Signal: Train train_009 instructed to STOP because R3_S9 is occupied (2-block rule / reserved).
+[1925s] Signal: Train train_010 cleared to proceed.
+[1950s] Signal: Train train_004 cleared to proceed.
+[1961s] Signal: Train train_010 instructed to STOP because R3_S7 is occupied (2-block rule / reserved).
+[1961s] Signal: Train train_012 cleared to proceed.
+Warning: Teleporting vehicle 'train_005'; waited too long (jam), lane='R4_S7_0', time=1977.00.
+Warning: Vehicle 'train_005' ends teleporting on edge 'R4_S8', time=1977.00.
+[1985s] Signal: Train train_007 cleared to proceed.
+[1997s] Signal: Train train_012 instructed to STOP because R3_S5 is occupied (2-block rule / reserved).
+[2021s] Signal: Train train_011 cleared to proceed. TOT 12 ACT 12 BUF 0)
+[2057s] Signal: Train train_008 cleared to proceed.
+Step #2100.00 (0ms ?*RT. ?UPS, TraCI: 4ms, vehicles TOT 12 ACT 12 BUF 0)
+[2107s] MAINTENANCE CLEARED: Block R4_S9 service complete.
+[2107s] Signal: Train train_005 cleared to proceed.
+[2123s] Signal: Train train_002 instructed to STOP because R7_S8 is occupied (2-block rule / reserved).
+[2125s] Signal: Train train_002 cleared to proceed.
+[2154s] Signal: Train train_002 instructed to STOP because R12_S1 is occupied (2-block rule / reserved).
+[2228s] Signal: Train train_002 cleared to proceed. TOT 12 ACT 12 BUF 0)
+Warning: Teleporting vehicle 'train_009'; waited too long (jam), lane='R3_S7_0', time=2248.00.
+Warning: Vehicle 'train_009' ends teleporting on edge 'R3_S8', time=2248.00.
+[2248s] Signal: Train train_010 cleared to proceed.
+[2283s] Signal: Train train_010 instructed to STOP because R3_S8 is occupied (2-block rule / reserved).
+[2283s] Signal: Train train_012 cleared to proceed.
+[2318s] Signal: Train train_012 instructed to STOP because R3_S6 is occupied (2-block rule / reserved).
+
+[2335s] MAINTENANCE CLEARED: Block R3_S9 service complete.
+[2335s] Signal: Train train_009 cleared to proceed.
+[2345s] Signal: Train train_006 instructed to STOP because R12_S1 is occupied (2-block rule / reserved).
+[2368s] Signal: Train train_010 cleared to proceed.
+[2380s] Signal: Train train_004 instructed to STOP because R7_S7 is occupied (2-block rule / reserved).
+[2404s] Signal: Train train_006 cleared to proceed. TOT 12 ACT 9 BUF 0)
+[2404s] Signal: Train train_012 cleared to proceed.
+
+[2436s] MAINTENANCE ALERT: Block R5_S4 is now under service!
+[2439s] Signal: Train train_004 cleared to proceed.
+[2474s] Signal: Train train_004 instructed to STOP because R7_S8 is occupied (2-block rule / reserved).
+[2477s] Signal: Train train_004 cleared to proceed.
+[2505s] Signal: Train train_004 instructed to STOP because R12_S1 is occupied (2-block rule / reserved).
+[2549s] Signal: Train train_009 instructed to STOP because R5_S4 is occupied (2-block rule / reserved).
+[2580s] Signal: Train train_004 cleared to proceed.
+[2584s] Signal: Train train_010 instructed to STOP because R5_S2 is occupied (2-block rule / reserved).
+[2620s] Signal: Train train_012 instructed to STOP because R3_S13 is occupied (2-block rule / reserved).
+[2725s] Signal: Train train_008 instructed to STOP because R12_S1 is occupied (2-block rule / reserved).
+[2756s] Signal: Train train_008 cleared to proceed.
+Warning: Teleporting vehicle 'train_009'; waited too long (jam), lane='R5_S2_0', time=2872.00.
+Warning: Vehicle 'train_009' ends teleporting on edge 'R5_S3', time=2872.00.
+[2872s] Signal: Train train_010 cleared to proceed.
+[2908s] Signal: Train train_010 instructed to STOP because R5_S3 is occupied (2-block rule / reserved).
+[2908s] Signal: Train train_012 cleared to proceed.
+[2944s] Signal: Train train_012 instructed to STOP because R5_S1 is occupied (2-block rule / reserved).
+Step #3100.00 (0ms ?*RT. ?UPS, TraCI: 6ms, vehicles TOT 12 ACT 4 BUF 0)
+[3165s] MAINTENANCE ALERT: Block R5_S9 is now under service!
+Warning: Teleporting vehicle 'train_009'; waited too long (jam), lane='R5_S3_0', time=3195.00.
+Warning: Vehicle 'train_009' ends teleporting on edge 'R5_S4', time=3195.00.
+[3195s] Signal: Train train_009 cleared to proceed.
+[3195s] Signal: Train train_010 cleared to proceed.
+[3231s] Signal: Train train_010 instructed to STOP because R5_S4 is occupied (2-block rule / reserved).
+[3231s] Signal: Train train_012 cleared to proceed.
+[3266s] Signal: Train train_012 instructed to STOP because R5_S2 is occupied (2-block rule / reserved).
+[3283s] Signal: Train train_009 instructed to STOP because R5_S9 is occupied (2-block rule / reserved).
+Step #3300.00 (0ms ?*RT. ?UPS, TraCI: 6ms, vehicles TOT 12 ACT 3 BUF 0)
+[3342s] MAINTENANCE CLEARED: Block R5_S4 service complete.
+[3342s] Signal: Train train_010 cleared to proceed.
+[3377s] Signal: Train train_012 cleared to proceed.
+[3437s] Signal: Train train_010 instructed to STOP because R5_S7 is occupied (2-block rule / reserved).
+[3473s] Signal: Train train_012 instructed to STOP because R5_S5 is occupied (2-block rule / reserved).
+Warning: Teleporting vehicle 'train_009'; waited too long (jam), lane='R5_S7_0', time=3606.00.
+Warning: Vehicle 'train_009' ends teleporting on edge 'R5_S8', time=3606.00.
+[3606s] Signal: Train train_010 cleared to proceed.
+[3642s] Signal: Train train_010 instructed to STOP because R5_S8 is occupied (2-block rule / reserved).
+[3642s] Signal: Train train_012 cleared to proceed.
+[3678s] Signal: Train train_012 instructed to STOP because R5_S6 is occupied (2-block rule / reserved).
+Step #3700.00 (0ms ?*RT. ?UPS, TraCI: 3ms, vehicles TOT 12 ACT 3 BUF 0)
+[3795s] MAINTENANCE ALERT: Block R6_S6 is now under service!
+Warning: Teleporting vehicle 'train_009'; waited too long (jam), lane='R5_S8_0', time=3929.00.
+Warning: Vehicle 'train_009' ends teleporting on edge 'R5_S9', time=3929.00.
+[3929s] Signal: Train train_009 cleared to proceed.
+[3929s] Signal: Train train_010 cleared to proceed.
+
+[3963s] MAINTENANCE CLEARED: Block R5_S9 service complete.
+[3964s] Signal: Train train_012 cleared to proceed.
+Step #4300.00[4299s] Signal: Train train_010 instructed to STOP because R12_S1 is occupied (2-block rule / reserved).
+[4304s] Signal: Train train_012 instructed to STOP because R6_S6 is occupied (2-block rule / reserved).
+[4372s] Signal: Train train_010 cleared to proceed.
+Step #4500.00 (0ms ?*RT. ?UPS, TraCI: 0ms, vehicles TOT 12 ACT 2 BUF 0)
+[4503s] MAINTENANCE ALERT: Block R4_S9 is now under service!
+
+[4516s] MAINTENANCE CLEARED: Block R6_S6 service complete.
+[4516s] Signal: Train train_012 cleared to proceed.
+Step #4600.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 12 ACT 2 BUF 0)
+[4648s] MAINTENANCE ALERT: Block R5_S1 is now under service!
+Step #4880.00 (0ms ?*RT. ?UPS, TraCI: 0ms, vehicles TOT 12 ACT 0 BUF 0)
+Simulation ended at time: 4880.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 14.67s
+ TraCI-Duration: 14.39s
+ Real time factor: 332.697
+ UPS: 2367.739296
+Vehicles:
+ Inserted: 12
+ Running: 0
+ Waiting: 0
+ Teleports: 11 (Jam: 10, Yield: 1)
+Simulation finished. 4D matrix T((6, 20, 81, 7200)) saved to output/T_matrix.npy.

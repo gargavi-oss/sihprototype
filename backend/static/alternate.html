@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RailOpt — Alternate Routing Schedule</title>
+    <meta name="description" content="AI-powered alternate routing analysis for railway maintenance scheduling.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="alternate.css">
+</head>
+<body>
+    <!-- Background -->
+    <div class="bg-elements">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+        <div class="bg-grid"></div>
+    </div>
+
+    <!-- ========== HEADER ========== -->
+    <header class="alt-header">
+        <div class="alt-header-left">
+            <a href="/" class="back-link">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Dashboard
+            </a>
+            <div class="alt-header-brand">
+                <div class="alt-logo-icon">
+                    <span class="material-symbols-outlined">compare_arrows</span>
+                </div>
+                <div>
+                    <div class="alt-header-title">Alternate Routing Schedule</div>
+                    <div class="alt-header-subtitle">AI-Optimized Track Rerouting Analysis</div>
+                </div>
+            </div>
+        </div>
+        <div class="ai-agent-badge">
+            <span class="ai-agent-dot"></span>
+            <span class="material-symbols-outlined">smart_toy</span>
+            Gemini AI Agent · Rerouting Analysis
+        </div>
+    </header>
+
+    <!-- ========== MAIN ========== -->
+    <main class="alt-main">
+        
+        <!-- Summary Metrics -->
+        <div class="metrics-row">
+            <div class="metric-card">
+                <div class="metric-label">Total Delay Reduction</div>
+                <div class="metric-value emerald">
+                    −48.5%
+                    <span class="metric-sub emerald">(−124 mins)</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Trains Rerouted</div>
+                <div class="metric-value white">
+                    3 / 9
+                    <span class="metric-sub muted">Express & Freight</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Blocks Optimized</div>
+                <div class="metric-value blue">
+                    4
+                    <span class="metric-sub muted">Conflict-Free</span>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Network Throughput</div>
+                <div class="metric-value purple">
+                    97.8%
+                    <span class="metric-sub emerald">(+8.4%)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendar Panel -->
+        <div class="calendar-panel">
+            <div class="calendar-header">
+                <div class="calendar-title">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    <h2>Track Timeline Matrix (t0 → t80)</h2>
+                </div>
+                <div class="calendar-legend">
+                    <div class="legend-item"><span class="legend-swatch maintenance"></span> Maintenance</div>
+                    <div class="legend-item"><span class="legend-swatch original"></span> Original Route</div>
+                    <div class="legend-item"><span class="legend-swatch rerouted"></span> Rerouted</div>
+                    <div class="legend-item"><span class="legend-swatch conflict"></span> Conflict</div>
+                </div>
+                <div class="toggle-btns">
+                    <button class="toggle-btn active" id="toggle-original" onclick="toggleOriginal()">Original Routes</button>
+                    <button class="toggle-btn active-green" id="toggle-rerouted" onclick="toggleRerouted()">Alternate Routes</button>
+                    <button class="toggle-btn active-red" id="toggle-conflicts" onclick="toggleConflicts()">Conflicts</button>
+                </div>
+            </div>
+            <div class="calendar-grid-wrapper">
+                <div class="calendar-grid" id="calendar-grid">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Route Comparison Section -->
+        <div class="comparison-section">
+            <div class="comparison-header">
+                <span class="material-symbols-outlined">swap_horiz</span>
+                <h2>Critical Rerouting Schedule Diff</h2>
+            </div>
+            <div class="route-cards" id="route-cards">
+                <!-- Rendered by JS -->
+            </div>
+        </div>
+
+        <!-- AI Agent Section -->
+        <div class="ai-section">
+            <div class="ai-section-header">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <h2>How the AI Agent Works</h2>
+            </div>
+            <div class="ai-pipeline">
+                <div class="ai-step">
+                    <div class="ai-step-icon">
+                        <span class="material-symbols-outlined">table_rows</span>
+                    </div>
+                    <h4>1. CSV Parsing</h4>
+                    <p>Parses TDMS, SMMS, TDS blocks and train schedule/delay CSVs into structured data</p>
+                </div>
+                <div class="ai-step">
+                    <div class="ai-step-icon">
+                        <span class="material-symbols-outlined">grid_on</span>
+                    </div>
+                    <h4>2. Matrix Building</h4>
+                    <p>Builds Y (occupancy), D (duration), Omega (engine/category), alpha (block type) matrices</p>
+                </div>
+                <div class="ai-step">
+                    <div class="ai-step-icon">
+                        <span class="material-symbols-outlined">search</span>
+                    </div>
+                    <h4>3. Conflict Detection</h4>
+                    <p>Gemini AI analyzes train routes against maintenance blocks to detect scheduling conflicts</p>
+                </div>
+                <div class="ai-step">
+                    <div class="ai-step-icon">
+                        <span class="material-symbols-outlined">alt_route</span>
+                    </div>
+                    <h4>4. Rerouting</h4>
+                    <p>Computes optimal alternate routes minimizing delay while maintaining safety constraints</p>
+                </div>
+            </div>
+            <div class="ai-note">
+                <span class="material-symbols-outlined">info</span>
+                <div>
+                    <strong>Pipeline Reference:</strong> The AI Agent (<code>ai_agent.py</code>) uses Google Gemini to intelligently map CSV data to CPLEX model parameters. 
+                    It computes derived arrays like Y (train occupancy), Omega (engine/category flags), and infers topology — 
+                    then the solver finds optimal maintenance windows while the agent identifies rerouting opportunities to minimize network delay.
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="alternate.js"></script>
+</body>
+</html>

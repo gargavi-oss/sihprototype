@@ -1,0 +1,62 @@
+[
+  {
+    "id": 0,
+    "block": "R3_S2",
+    "type": "power",
+    "alpha": 1
+  },
+  {
+    "id": 1,
+    "block": "R2_S6",
+    "type": "power",
+    "alpha": 1
+  },
+  {
+    "id": 2,
+    "block": "R8_S7",
+    "type": "power",
+    "alpha": 1
+  },
+  {
+    "id": 3,
+    "block": "R3_S9",
+    "type": "traffic",
+    "alpha": 0
+  },
+  {
+    "id": 4,
+    "block": "R3_S3",
+    "type": "power",
+    "alpha": 1
+  },
+  {
+    "id": 5,
+    "block": "R2_S5",
+    "type": "power",
+    "alpha": 1
+  },
+  {
+    "id": 6,
+    "block": "R7_S3",
+    "type": "traffic",
+    "alpha": 0
+  },
+  {
+    "id": 7,
+    "block": "R3_S5",
+    "type": "traffic",
+    "alpha": 0
+  },
+  {
+    "id": 8,
+    "block": "R3_S6",
+    "type": "power",
+    "alpha": 1
+  },
+  {
+    "id": 9,
+    "block": "R8_S3",
+    "type": "power",
+    "alpha": 1
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "section_length_m": 1000,
+  "vehicle_class": "rail",
+  "max_speed_ms": 33.3,
+
+  "stations": [
+    {"id": "STN_A", "name": "Station A", "x": -10000, "y": 5000},
+    {"id": "STN_B", "name": "Station B", "x": -10000, "y": -5000},
+    {"id": "STN_C", "name": "Station C", "x": 30000,  "y": 8000},
+    {"id": "STN_D", "name": "Station D", "x": 30000,  "y": -8000},
+    {"id": "STN_E", "name": "Station E", "x": 20000,  "y": 10000},
+    {"id": "STN_F", "name": "Station F", "x": 40000,  "y": -8000},
+    {"id": "STN_G", "name": "Station G", "x": 20000,  "y": -10000},
+    {"id": "STN_H", "name": "Station H", "x": 30000,  "y": 0}
+  ],
+
+  "junctions": [
+    {"id": "JN_1", "x": 0,      "y": 0},
+    {"id": "JN_2", "x": 10000,  "y": 0},
+    {"id": "JN_3", "x": 20000,  "y": 0}
+  ],
+
+  "tracks": [
+    {"id": "R1", "from": "STN_A", "to": "JN_1",  "num_sections": 5},
+    {"id": "R2", "from": "STN_B", "to": "JN_1",  "num_sections": 6},
+    {"id": "R3", "from": "JN_1",  "to": "JN_2",  "num_sections": 11},
+    {"id": "R4", "from": "JN_2",  "to": "STN_E", "num_sections": 4},
+    {"id": "R5", "from": "JN_2",  "to": "JN_3",  "num_sections": 9},
+    {"id": "R6", "from": "JN_3",  "to": "STN_C", "num_sections": 5},
+    {"id": "R7", "from": "JN_3",  "to": "STN_D", "num_sections": 8},
+    {"id": "R8", "from": "JN_3",  "to": "STN_F", "num_sections": 7},
+    {"id": "R9", "from": "JN_2", "to": "STN_G", "num_sections": 7},
+    {"id": "R10", "from": "JN_3", "to": "STN_H", "num_sections": 6}
+  ]
+}

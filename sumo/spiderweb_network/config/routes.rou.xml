@@ -1,0 +1,50 @@
+<routes>
+    <vType id="train_diesel" vClass="rail" length="100" maxSpeed="500.0" accel="10000.0" decel="10000.0" color="0,80,180" guiShape="rail" />
+    <vType id="train_electrified" vClass="rail" length="100" maxSpeed="500.0" accel="10000.0" decel="10000.0" color="255,0,0" guiShape="rail" />
+    <vType id="train_hybrid" vClass="rail" length="100" maxSpeed="500.0" accel="10000.0" decel="10000.0" color="0,80,180" guiShape="rail" />
+    <route id="route_train_001" edges="R11_S1 R11_S2 R1_S1 R1_S2 R1_S3 R1_S4 R1_S5 R3_S1 R3_S2 R3_S3 R3_S4 R3_S5 R3_S6 R3_S7 R3_S8 R3_S9 R3_S10 R3_S11 R5_S1 R5_S2 R5_S3 R5_S4 R5_S5 R5_S6 R5_S7 R5_S8 R5_S9 R6_S1 R6_S2 R6_S3 R6_S4 R6_S5 R13_S1 R13_S2" />
+    <vehicle id="train_001" type="train_diesel" route="route_train_001" depart="0">
+        <stop trainStop="STN_A_stop_P1" duration="1" />
+        <stop trainStop="STN_C_stop_P1" duration="1" />
+    </vehicle>
+    <route id="route_train_002" edges="R12_S1 R12_S2 R2_S1 R2_S2 R2_S3 R2_S4 R2_S5 R2_S6 R3_S1 R3_S2 R3_S3 R3_S4 R3_S5 R3_S6 R3_S7 R3_S8 R3_S9 R3_S10 R3_S11 R5_S1 R5_S2 R5_S3 R5_S4 R5_S5 R5_S6 R5_S7 R5_S8 R5_S9 R6_S1 R6_S2 R6_S3 R6_S4 R6_S5 R13_S1 R13_S2" />
+    <vehicle id="train_002" type="train_electrified" route="route_train_002" depart="5">
+        <stop trainStop="STN_B_stop_P1" duration="1" />
+        <stop trainStop="STN_C_stop_P1" duration="1" />
+    </vehicle>
+    <route id="route_train_003" edges="R11_S1 R11_S2 R1_S1 R1_S2 R1_S3 R1_S4 R1_S5 R3_S1 R3_S2 R3_S3 R3_S4 R3_S5 R3_S6 R3_S7 R3_S8 R3_S9 R3_S10 R3_S11 R4_S1 R4_S2 R4_S3 R4_S4 R15_S1 R15_S2" />
+    <vehicle id="train_003" type="train_hybrid" route="route_train_003" depart="10">
+        <stop trainStop="STN_A_stop_P1" duration="1" />
+        <stop trainStop="STN_E_stop_P1" duration="1" />
+    </vehicle>
+    <route id="route_train_004" edges="R12_S1 R12_S2 R2_S1 R2_S2 R2_S3 R2_S4 R2_S5 R2_S6 R3_S1 R3_S2 R3_S3 R3_S4 R3_S5 R3_S6 R3_S7 R3_S8 R3_S9 R3_S10 R3_S11 R5_S1 R5_S2 R5_S3 R5_S4 R5_S5 R5_S6 R5_S7 R5_S8 R5_S9 R7_S1 R7_S2 R7_S3 R7_S4 R7_S5 R7_S6 R7_S7 R7_S8 R14_S1 R14_S2" />
+    <vehicle id="train_004" type="train_diesel" route="route_train_004" depart="15">
+        <stop trainStop="STN_B_stop_P1" duration="1" />
+        <stop trainStop="STN_D_stop_P1" duration="1" />
+    </vehicle>
+    <route id="route_train_005" edges="R11_S1 R11_S2 R1_S1 R1_S2 R1_S3 R1_S4 R1_S5 R3_S1 R3_S2 R3_S3 R3_S4 R3_S5 R3_S6 R3_S7 R3_S8 R3_S9 R3_S10 R3_S11 R9_S1 R9_S2 R9_S3 R9_S4 R9_S5 R9_S6 R9_S7 R17_S1 R17_S2" />
+    <vehicle id="train_005" type="train_electrified" route="route_train_005" depart="20">
+        <stop trainStop="STN_A_stop_P1" duration="1" />
+        <stop trainStop="STN_G_stop_P1" duration="1" />
+    </vehicle>
+    <route id="route_train_006" edges="R12_S1 R12_S2 R2_S1 R2_S2 R2_S3 R2_S4 R2_S5 R2_S6 R3_S1 R3_S2 R3_S3 R3_S4 R3_S5 R3_S6 R3_S7 R3_S8 R3_S9 R3_S10 R3_S11 R5_S1 R5_S2 R5_S3 R5_S4 R5_S5 R5_S6 R5_S7 R5_S8 R5_S9 R6_S1 R6_S2 R6_S3 R6_S4 R6_S5 R13_S1 R13_S2" />
+    <vehicle id="train_006" type="train_hybrid" route="route_train_006" depart="25">
+        <stop trainStop="STN_B_stop_P1" duration="1" />
+        <stop trainStop="STN_C_stop_P1" duration="1" />
+    </vehicle>
+    <route id="route_train_007" edges="R12_S1 R12_S2 R2_S1 R2_S2 R2_S3 R2_S4 R2_S5 R2_S6 R3_S1 R3_S2 R3_S3 R3_S4 R3_S5 R3_S6 R3_S7 R3_S8 R3_S9 R3_S10 R3_S11 R5_S1 R5_S2 R5_S3 R5_S4 R5_S5 R5_S6 R5_S7 R5_S8 R5_S9 R7_S1 R7_S2 R7_S3 R7_S4 R7_S5 R7_S6 R7_S7 R7_S8 R14_S1 R14_S2" />
+    <vehicle id="train_007" type="train_diesel" route="route_train_007" depart="30">
+        <stop trainStop="STN_B_stop_P1" duration="1" />
+        <stop trainStop="STN_D_stop_P1" duration="1" />
+    </vehicle>
+    <route id="route_train_008" edges="R11_S1 R11_S2 R1_S1 R1_S2 R1_S3 R1_S4 R1_S5 R3_S1 R3_S2 R3_S3 R3_S4 R3_S5 R3_S6 R3_S7 R3_S8 R3_S9 R3_S10 R3_S11 R5_S1 R5_S2 R5_S3 R5_S4 R5_S5 R5_S6 R5_S7 R5_S8 R5_S9 R6_S1 R6_S2 R6_S3 R6_S4 R6_S5 R13_S1 R13_S2" />
+    <vehicle id="train_008" type="train_electrified" route="route_train_008" depart="35">
+        <stop trainStop="STN_A_stop_P1" duration="1" />
+        <stop trainStop="STN_C_stop_P1" duration="1" />
+    </vehicle>
+    <route id="route_train_009" edges="R12_S1 R12_S2 R2_S1 R2_S2 R2_S3 R2_S4 R2_S5 R2_S6 R3_S1 R3_S2 R3_S3 R3_S4 R3_S5 R3_S6 R3_S7 R3_S8 R3_S9 R3_S10 R3_S11 R4_S1 R4_S2 R4_S3 R4_S4 R15_S1 R15_S2" />
+    <vehicle id="train_009" type="train_hybrid" route="route_train_009" depart="40">
+        <stop trainStop="STN_B_stop_P1" duration="1" />
+        <stop trainStop="STN_E_stop_P1" duration="1" />
+    </vehicle>
+</routes>

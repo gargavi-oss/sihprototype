@@ -1,0 +1,86 @@
+<edges>
+    <edge id="R11_S1" from="STN_A_div" to="STN_A_P1" type="rail_track" />
+    <edge id="R11_S2" from="STN_A_P1" to="STN_A_mrg" type="rail_track" />
+    <edge id="R12_S1" from="STN_B_div" to="STN_B_P1" type="rail_track" />
+    <edge id="R12_S2" from="STN_B_P1" to="STN_B_mrg" type="rail_track" />
+    <edge id="R13_S1" from="STN_C_div" to="STN_C_P1" type="rail_track" />
+    <edge id="R13_S2" from="STN_C_P1" to="STN_C_mrg" type="rail_track" />
+    <edge id="R14_S1" from="STN_D_div" to="STN_D_P1" type="rail_track" />
+    <edge id="R14_S2" from="STN_D_P1" to="STN_D_mrg" type="rail_track" />
+    <edge id="R15_S1" from="STN_E_div" to="STN_E_P1" type="rail_track" />
+    <edge id="R15_S2" from="STN_E_P1" to="STN_E_mrg" type="rail_track" />
+    <edge id="R16_S1" from="STN_F_div" to="STN_F_P1" type="rail_track" />
+    <edge id="R16_S2" from="STN_F_P1" to="STN_F_mrg" type="rail_track" />
+    <edge id="R17_S1" from="STN_G_div" to="STN_G_P1" type="rail_track" />
+    <edge id="R17_S2" from="STN_G_P1" to="STN_G_mrg" type="rail_track" />
+    <edge id="R18_S1" from="STN_H_div" to="STN_H_P1" type="rail_track" />
+    <edge id="R18_S2" from="STN_H_P1" to="STN_H_mrg" type="rail_track" />
+    <edge id="R1_S1" from="STN_A_mrg" to="R1_n1" type="rail_track" length="1000" />
+    <edge id="R1_S2" from="R1_n1" to="R1_n2" type="rail_track" length="1000" />
+    <edge id="R1_S3" from="R1_n2" to="R1_n3" type="rail_track" length="1000" />
+    <edge id="R1_S4" from="R1_n3" to="R1_n4" type="rail_track" length="1000" />
+    <edge id="R1_S5" from="R1_n4" to="JN_1" type="rail_track" length="1000" />
+    <edge id="R2_S1" from="STN_B_mrg" to="R2_n1" type="rail_track" length="1000" />
+    <edge id="R2_S2" from="R2_n1" to="R2_n2" type="rail_track" length="1000" />
+    <edge id="R2_S3" from="R2_n2" to="R2_n3" type="rail_track" length="1000" />
+    <edge id="R2_S4" from="R2_n3" to="R2_n4" type="rail_track" length="1000" />
+    <edge id="R2_S5" from="R2_n4" to="R2_n5" type="rail_track" length="1000" />
+    <edge id="R2_S6" from="R2_n5" to="JN_1" type="rail_track" length="1000" />
+    <edge id="R3_S1" from="JN_1" to="R3_n1" type="rail_track" length="1000" />
+    <edge id="R3_S2" from="R3_n1" to="R3_n2" type="rail_track" length="1000" />
+    <edge id="R3_S3" from="R3_n2" to="R3_n3" type="rail_track" length="1000" />
+    <edge id="R3_S4" from="R3_n3" to="R3_n4" type="rail_track" length="1000" />
+    <edge id="R3_S5" from="R3_n4" to="R3_n5" type="rail_track" length="1000" />
+    <edge id="R3_S6" from="R3_n5" to="R3_n6" type="rail_track" length="1000" />
+    <edge id="R3_S7" from="R3_n6" to="R3_n7" type="rail_track" length="1000" />
+    <edge id="R3_S8" from="R3_n7" to="R3_n8" type="rail_track" length="1000" />
+    <edge id="R3_S9" from="R3_n8" to="R3_n9" type="rail_track" length="1000" />
+    <edge id="R3_S10" from="R3_n9" to="R3_n10" type="rail_track" length="1000" />
+    <edge id="R3_S11" from="R3_n10" to="JN_2" type="rail_track" length="1000" />
+    <edge id="R4_S1" from="JN_2" to="R4_n1" type="rail_track" length="1000" />
+    <edge id="R4_S2" from="R4_n1" to="R4_n2" type="rail_track" length="1000" />
+    <edge id="R4_S3" from="R4_n2" to="R4_n3" type="rail_track" length="1000" />
+    <edge id="R4_S4" from="R4_n3" to="STN_E_div" type="rail_track" length="1000" />
+    <edge id="R5_S1" from="JN_2" to="R5_n1" type="rail_track" length="1000" />
+    <edge id="R5_S2" from="R5_n1" to="R5_n2" type="rail_track" length="1000" />
+    <edge id="R5_S3" from="R5_n2" to="R5_n3" type="rail_track" length="1000" />
+    <edge id="R5_S4" from="R5_n3" to="R5_n4" type="rail_track" length="1000" />
+    <edge id="R5_S5" from="R5_n4" to="R5_n5" type="rail_track" length="1000" />
+    <edge id="R5_S6" from="R5_n5" to="R5_n6" type="rail_track" length="1000" />
+    <edge id="R5_S7" from="R5_n6" to="R5_n7" type="rail_track" length="1000" />
+    <edge id="R5_S8" from="R5_n7" to="R5_n8" type="rail_track" length="1000" />
+    <edge id="R5_S9" from="R5_n8" to="JN_3" type="rail_track" length="1000" />
+    <edge id="R6_S1" from="JN_3" to="R6_n1" type="rail_track" length="1000" />
+    <edge id="R6_S2" from="R6_n1" to="R6_n2" type="rail_track" length="1000" />
+    <edge id="R6_S3" from="R6_n2" to="R6_n3" type="rail_track" length="1000" />
+    <edge id="R6_S4" from="R6_n3" to="R6_n4" type="rail_track" length="1000" />
+    <edge id="R6_S5" from="R6_n4" to="STN_C_div" type="rail_track" length="1000" />
+    <edge id="R7_S1" from="JN_3" to="R7_n1" type="rail_track" length="1000" />
+    <edge id="R7_S2" from="R7_n1" to="R7_n2" type="rail_track" length="1000" />
+    <edge id="R7_S3" from="R7_n2" to="R7_n3" type="rail_track" length="1000" />
+    <edge id="R7_S4" from="R7_n3" to="R7_n4" type="rail_track" length="1000" />
+    <edge id="R7_S5" from="R7_n4" to="R7_n5" type="rail_track" length="1000" />
+    <edge id="R7_S6" from="R7_n5" to="R7_n6" type="rail_track" length="1000" />
+    <edge id="R7_S7" from="R7_n6" to="R7_n7" type="rail_track" length="1000" />
+    <edge id="R7_S8" from="R7_n7" to="STN_D_div" type="rail_track" length="1000" />
+    <edge id="R8_S1" from="JN_3" to="R8_n1" type="rail_track" length="1000" />
+    <edge id="R8_S2" from="R8_n1" to="R8_n2" type="rail_track" length="1000" />
+    <edge id="R8_S3" from="R8_n2" to="R8_n3" type="rail_track" length="1000" />
+    <edge id="R8_S4" from="R8_n3" to="R8_n4" type="rail_track" length="1000" />
+    <edge id="R8_S5" from="R8_n4" to="R8_n5" type="rail_track" length="1000" />
+    <edge id="R8_S6" from="R8_n5" to="R8_n6" type="rail_track" length="1000" />
+    <edge id="R8_S7" from="R8_n6" to="STN_F_div" type="rail_track" length="1000" />
+    <edge id="R9_S1" from="JN_2" to="R9_n1" type="rail_track" length="1000" />
+    <edge id="R9_S2" from="R9_n1" to="R9_n2" type="rail_track" length="1000" />
+    <edge id="R9_S3" from="R9_n2" to="R9_n3" type="rail_track" length="1000" />
+    <edge id="R9_S4" from="R9_n3" to="R9_n4" type="rail_track" length="1000" />
+    <edge id="R9_S5" from="R9_n4" to="R9_n5" type="rail_track" length="1000" />
+    <edge id="R9_S6" from="R9_n5" to="R9_n6" type="rail_track" length="1000" />
+    <edge id="R9_S7" from="R9_n6" to="STN_G_div" type="rail_track" length="1000" />
+    <edge id="R10_S1" from="JN_3" to="R10_n1" type="rail_track" length="1000" />
+    <edge id="R10_S2" from="R10_n1" to="R10_n2" type="rail_track" length="1000" />
+    <edge id="R10_S3" from="R10_n2" to="R10_n3" type="rail_track" length="1000" />
+    <edge id="R10_S4" from="R10_n3" to="R10_n4" type="rail_track" length="1000" />
+    <edge id="R10_S5" from="R10_n4" to="R10_n5" type="rail_track" length="1000" />
+    <edge id="R10_S6" from="R10_n5" to="STN_H_div" type="rail_track" length="1000" />
+</edges>

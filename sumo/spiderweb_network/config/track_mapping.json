@@ -1,0 +1,260 @@
+{
+  "inter_station_tracks": {
+    "R1": {
+      "from": "STN_A",
+      "to": "JN_1",
+      "sections": [
+        "R1_S1",
+        "R1_S2",
+        "R1_S3",
+        "R1_S4",
+        "R1_S5"
+      ],
+      "num_sections": 5
+    },
+    "R2": {
+      "from": "STN_B",
+      "to": "JN_1",
+      "sections": [
+        "R2_S1",
+        "R2_S2",
+        "R2_S3",
+        "R2_S4",
+        "R2_S5",
+        "R2_S6"
+      ],
+      "num_sections": 6
+    },
+    "R3": {
+      "from": "JN_1",
+      "to": "JN_2",
+      "sections": [
+        "R3_S1",
+        "R3_S2",
+        "R3_S3",
+        "R3_S4",
+        "R3_S5",
+        "R3_S6",
+        "R3_S7",
+        "R3_S8",
+        "R3_S9",
+        "R3_S10",
+        "R3_S11"
+      ],
+      "num_sections": 11
+    },
+    "R4": {
+      "from": "JN_2",
+      "to": "STN_E",
+      "sections": [
+        "R4_S1",
+        "R4_S2",
+        "R4_S3",
+        "R4_S4"
+      ],
+      "num_sections": 4
+    },
+    "R5": {
+      "from": "JN_2",
+      "to": "JN_3",
+      "sections": [
+        "R5_S1",
+        "R5_S2",
+        "R5_S3",
+        "R5_S4",
+        "R5_S5",
+        "R5_S6",
+        "R5_S7",
+        "R5_S8",
+        "R5_S9"
+      ],
+      "num_sections": 9
+    },
+    "R6": {
+      "from": "JN_3",
+      "to": "STN_C",
+      "sections": [
+        "R6_S1",
+        "R6_S2",
+        "R6_S3",
+        "R6_S4",
+        "R6_S5"
+      ],
+      "num_sections": 5
+    },
+    "R7": {
+      "from": "JN_3",
+      "to": "STN_D",
+      "sections": [
+        "R7_S1",
+        "R7_S2",
+        "R7_S3",
+        "R7_S4",
+        "R7_S5",
+        "R7_S6",
+        "R7_S7",
+        "R7_S8"
+      ],
+      "num_sections": 8
+    },
+    "R8": {
+      "from": "JN_3",
+      "to": "STN_F",
+      "sections": [
+        "R8_S1",
+        "R8_S2",
+        "R8_S3",
+        "R8_S4",
+        "R8_S5",
+        "R8_S6",
+        "R8_S7"
+      ],
+      "num_sections": 7
+    },
+    "R9": {
+      "from": "JN_2",
+      "to": "STN_G",
+      "sections": [
+        "R9_S1",
+        "R9_S2",
+        "R9_S3",
+        "R9_S4",
+        "R9_S5",
+        "R9_S6",
+        "R9_S7"
+      ],
+      "num_sections": 7
+    },
+    "R10": {
+      "from": "JN_3",
+      "to": "STN_H",
+      "sections": [
+        "R10_S1",
+        "R10_S2",
+        "R10_S3",
+        "R10_S4",
+        "R10_S5",
+        "R10_S6"
+      ],
+      "num_sections": 6
+    }
+  },
+  "station_tracks": {
+    "STN_A": [
+      {
+        "r_id": "R11",
+        "platform": 1,
+        "sections": [
+          "R11_S1",
+          "R11_S2"
+        ],
+        "num_sections": 2,
+        "train_stop": "STN_A_stop_P1"
+      }
+    ],
+    "STN_B": [
+      {
+        "r_id": "R12",
+        "platform": 1,
+        "sections": [
+          "R12_S1",
+          "R12_S2"
+        ],
+        "num_sections": 2,
+        "train_stop": "STN_B_stop_P1"
+      }
+    ],
+    "STN_C": [
+      {
+        "r_id": "R13",
+        "platform": 1,
+        "sections": [
+          "R13_S1",
+          "R13_S2"
+        ],
+        "num_sections": 2,
+        "train_stop": "STN_C_stop_P1"
+      }
+    ],
+    "STN_D": [
+      {
+        "r_id": "R14",
+        "platform": 1,
+        "sections": [
+          "R14_S1",
+          "R14_S2"
+        ],
+        "num_sections": 2,
+        "train_stop": "STN_D_stop_P1"
+      }
+    ],
+    "STN_E": [
+      {
+        "r_id": "R15",
+        "platform": 1,
+        "sections": [
+          "R15_S1",
+          "R15_S2"
+        ],
+        "num_sections": 2,
+        "train_stop": "STN_E_stop_P1"
+      }
+    ],
+    "STN_F": [
+      {
+        "r_id": "R16",
+        "platform": 1,
+        "sections": [
+          "R16_S1",
+          "R16_S2"
+        ],
+        "num_sections": 2,
+        "train_stop": "STN_F_stop_P1"
+      }
+    ],
+    "STN_G": [
+      {
+        "r_id": "R17",
+        "platform": 1,
+        "sections": [
+          "R17_S1",
+          "R17_S2"
+        ],
+        "num_sections": 2,
+        "train_stop": "STN_G_stop_P1"
+      }
+    ],
+    "STN_H": [
+      {
+        "r_id": "R18",
+        "platform": 1,
+        "sections": [
+          "R18_S1",
+          "R18_S2"
+        ],
+        "num_sections": 2,
+        "train_stop": "STN_H_stop_P1"
+      }
+    ]
+  },
+  "all_tracks_summary": [
+    "R1: Track STN_A -> JN_1 (5 sections: R1_S1 to R1_S5)",
+    "R2: Track STN_B -> JN_1 (6 sections: R2_S1 to R2_S6)",
+    "R3: Track JN_1 -> JN_2 (11 sections: R3_S1 to R3_S11)",
+    "R4: Track JN_2 -> STN_E (4 sections: R4_S1 to R4_S4)",
+    "R5: Track JN_2 -> JN_3 (9 sections: R5_S1 to R5_S9)",
+    "R6: Track JN_3 -> STN_C (5 sections: R6_S1 to R6_S5)",
+    "R7: Track JN_3 -> STN_D (8 sections: R7_S1 to R7_S8)",
+    "R8: Track JN_3 -> STN_F (7 sections: R8_S1 to R8_S7)",
+    "R9: Track JN_2 -> STN_G (7 sections: R9_S1 to R9_S7)",
+    "R10: Track JN_3 -> STN_H (6 sections: R10_S1 to R10_S6)",
+    "R11: Station platform at STN_A Platform 1 (2 sections: R11_S1, R11_S2)",
+    "R12: Station platform at STN_B Platform 1 (2 sections: R12_S1, R12_S2)",
+    "R13: Station platform at STN_C Platform 1 (2 sections: R13_S1, R13_S2)",
+    "R14: Station platform at STN_D Platform 1 (2 sections: R14_S1, R14_S2)",
+    "R15: Station platform at STN_E Platform 1 (2 sections: R15_S1, R15_S2)",
+    "R16: Station platform at STN_F Platform 1 (2 sections: R16_S1, R16_S2)",
+    "R17: Station platform at STN_G Platform 1 (2 sections: R17_S1, R17_S2)",
+    "R18: Station platform at STN_H Platform 1 (2 sections: R18_S1, R18_S2)"
+  ]
+}

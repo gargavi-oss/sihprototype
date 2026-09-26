@@ -1,0 +1,22 @@
+# RailOpt backend — Python 3.10+
+flask>=3.1,<4
+flask-cors>=6.0
+flask-sqlalchemy>=3.1
+sqlalchemy>=2.0,<2.1   # 2.1 triggers a harmless flask-sqlalchemy warning
+python-dotenv>=1.0
+numpy>=2.0
+pydantic>=2.0
+
+# Optimisation solver (Community Edition: max 1000 variables)
+docplex>=2.32
+cplex>=22.1
+
+# AI agent (alternate routes)
+langchain-groq>=1.0
+langchain-google-genai>=4.0
+
+# SUMO simulation (bundles sumo / sumo-gui binaries)
+eclipse-sumo>=1.27
+traci>=1.27
+sumolib>=1.27
+matplotlib>=3.8

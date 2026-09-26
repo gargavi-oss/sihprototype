@@ -1,0 +1,10 @@
+<additional>
+    <trainStop id="STN_A_stop_P1" lane="R11_S1_0" startPos="10" endPos="250" name="Station A - P1" />
+    <trainStop id="STN_B_stop_P1" lane="R12_S1_0" startPos="10" endPos="250" name="Station B - P1" />
+    <trainStop id="STN_C_stop_P1" lane="R13_S1_0" startPos="10" endPos="250" name="Station C - P1" />
+    <trainStop id="STN_D_stop_P1" lane="R14_S1_0" startPos="10" endPos="250" name="Station D - P1" />
+    <trainStop id="STN_E_stop_P1" lane="R15_S1_0" startPos="10" endPos="250" name="Station E - P1" />
+    <trainStop id="STN_F_stop_P1" lane="R16_S1_0" startPos="10" endPos="250" name="Station F - P1" />
+    <trainStop id="STN_G_stop_P1" lane="R17_S1_0" startPos="10" endPos="250" name="Station G - P1" />
+    <trainStop id="STN_H_stop_P1" lane="R18_S1_0" startPos="10" endPos="250" name="Station H - P1" />
+</additional>

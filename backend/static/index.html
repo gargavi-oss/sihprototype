@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RailOpt — Intelligent Maintenance Scheduler</title>
+    <meta name="description" content="AI-powered railway maintenance scheduling system bridging TDMS, SMMS, and TDS.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <div class="container">
+        <!-- ========== STICKY HEADER ========== -->
+        <header>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div class="logo">
+                    <div class="logo-icon-wrap">
+                        <span class="material-symbols-outlined">directions_subway</span>
+                    </div>
+                    <h1>Rail<span>Opt</span></h1>
+                </div>
+                <span class="logo-subtitle">Autonomous Track Maintenance Engine</span>
+            </div>
+            <div class="header-right">
+                <div class="engine-status-badge" id="engine-status-badge">
+                    <span class="status-pulse-dot" id="status-pulse-dot"></span>
+                    <span id="engine-status-text">Ready · Idle Engine</span>
+                </div>
+                <button id="load-demo-btn" class="btn btn-secondary">
+                    <span class="material-symbols-outlined" style="font-size:1.1rem;">terminal</span>
+                    Load Demo Data
+                </button>
+            </div>
+        </header>
+
+        <!-- ========== MAIN DASHBOARD ========== -->
+        <main>
+            <div class="dashboard-grid">
+                
+                <!-- ===== LEFT COLUMN: CSV Uploads ===== -->
+                <div class="upload-section glass-panel">
+                    <div class="panel-header">
+                        <div class="panel-header-row">
+                            <div class="panel-title">
+                                <div class="panel-icon-wrap blue">
+                                    <span class="material-symbols-outlined" style="font-size:1.1rem;">upload_file</span>
+                                </div>
+                                <div>
+                                    <h2>Department Inputs</h2>
+                                    <p>Ingest subsystem constraints & schedules</p>
+                                </div>
+                            </div>
+                            <span class="input-counter">
+                                <span class="count" id="loaded-count">0</span> / 5 Required
+                            </span>
+                        </div>
+                    </div>
+
+                    <form id="upload-form">
+                        <!-- TDMS -->
+                        <div class="upload-group">
+                            <label for="tdms-file" class="file-drop-area dept-tdms">
+                                <span class="file-msg">
+                                    <div class="dept-icon amber">
+                                        <span class="material-symbols-outlined">bolt</span>
+                                    </div>
+                                    <div class="file-label-group">
+                                        <h3>TDMS (Power Blocks) <span class="dept-tag">Traction</span></h3>
+                                        <p>Overhead traction power window constraints</p>
+                                    </div>
+                                </span>
+                                <input type="file" id="tdms-file" name="tdms" accept=".csv" required>
+                                <span class="file-status"><span class="status-dot"></span> No file selected</span>
+                            </label>
+                        </div>
+
+                        <!-- SMMS -->
+                        <div class="upload-group">
+                            <label for="smms-file" class="file-drop-area dept-smms">
+                                <span class="file-msg">
+                                    <div class="dept-icon rose">
+                                        <span class="material-symbols-outlined">traffic</span>
+                                    </div>
+                                    <div class="file-label-group">
+                                        <h3>SMMS (Traffic Blocks) <span class="dept-tag">Possession</span></h3>
+                                        <p>Station master slot possession requests</p>
+                                    </div>
+                                </span>
+                                <input type="file" id="smms-file" name="smms" accept=".csv" required>
+                                <span class="file-status"><span class="status-dot"></span> No file selected</span>
+                            </label>
+                        </div>
+
+                        <!-- TDS -->
+                        <div class="upload-group">
+                            <label for="tds-file" class="file-drop-area dept-tds">
+                                <span class="file-msg">
+                                    <div class="dept-icon sky">
+                                        <span class="material-symbols-outlined">alt_route</span>
+                                    </div>
+                                    <div class="file-label-group">
+                                        <h3>TDS (Traffic Blocks) <span class="dept-tag">Safety</span></h3>
+                                        <p>Section dispatching interlock safety limits</p>
+                                    </div>
+                                </span>
+                                <input type="file" id="tds-file" name="tds" accept=".csv" required>
+                                <span class="file-status"><span class="status-dot"></span> No file selected</span>
+                            </label>
+                        </div>
+                        
+                        <!-- Section Divider -->
+                        <div class="section-divider">
+                            <div class="divider-badge">
+                                <span class="material-symbols-outlined">timeline</span>
+                                Train Schedule & Delays
+                            </div>
+                        </div>
+
+                        <!-- Timetable -->
+                        <div class="upload-group">
+                            <label for="schedule-file" class="file-drop-area dept-schedule">
+                                <span class="file-msg">
+                                    <div class="dept-icon violet">
+                                        <span class="material-symbols-outlined">schedule</span>
+                                    </div>
+                                    <div class="file-label-group">
+                                        <h3>Timetable (Y Matrix) <span class="dept-tag">Graph</span></h3>
+                                        <p>Master passenger & freight timetable graph</p>
+                                    </div>
+                                </span>
+                                <input type="file" id="schedule-file" name="schedule" accept=".csv" required>
+                                <span class="file-status"><span class="status-dot"></span> No file selected</span>
+                            </label>
+                        </div>
+
+                        <!-- Delay -->
+                        <div class="upload-group">
+                            <label for="delay-file" class="file-drop-area dept-delay">
+                                <span class="file-msg">
+                                    <div class="dept-icon emerald">
+                                        <span class="material-symbols-outlined">timer</span>
+                                    </div>
+                                    <div class="file-label-group">
+                                        <h3>Delay Info (d Vector) <span class="dept-tag">Stochastic</span></h3>
+                                        <p>Historical disruption stochastic delay vector</p>
+                                    </div>
+                                </span>
+                                <input type="file" id="delay-file" name="delay" accept=".csv" required>
+                                <span class="file-status"><span class="status-dot"></span> No file selected</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" id="solve-btn" class="btn btn-primary btn-block">
+                            <span class="material-symbols-outlined" id="solve-btn-icon">tune</span>
+                            <span id="solve-btn-label">Parse & Solve</span>
+                        </button>
+                        <div class="solver-meta">
+                            <span style="display:flex;align-items:center;gap:0.35rem;">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                Mixed-Integer CBC Engine
+                            </span>
+                            <span style="font-family:var(--font-mono);">Tolerance: 1e-4</span>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- ===== RIGHT COLUMN ===== -->
+                <div class="right-column">
+                    
+                    <!-- Status / Log Panel -->
+                    <div class="status-panel glass-panel">
+                        <div class="panel-header" style="border-bottom:none; margin-bottom:0.75rem; padding-bottom:0.5rem;">
+                            <div class="panel-header-row">
+                                <div class="panel-title">
+                                    <div class="panel-icon-wrap blue">
+                                        <span class="material-symbols-outlined" style="font-size:1.1rem;">terminal</span>
+                                    </div>
+                                    <h2>System Status & Optimizer Logs</h2>
+                                </div>
+                                <div class="status-indicator" id="status-indicator">
+                                    <span class="dot"></span>
+                                    <span class="status-text">Ready</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="terminal-window" id="terminal-output">
+                            <div class="log-line sys">[INIT] RailOpt MIP Core v2.4.1 initialized.</div>
+                            <div class="log-line">[INIT] SUMO microscopic simulation bridge hooked.</div>
+                            <div class="log-line">[SOLVER] Awaiting TDMS, SMMS, TDS, and timetable ingestion...</div>
+                        </div>
+                    </div>
+
+                    <!-- Results Panel -->
+                    <div class="results-panel glass-panel hidden" id="results-panel">
+                        <div class="panel-header">
+                            <div class="panel-header-row">
+                                <div class="panel-title">
+                                    <div class="panel-icon-wrap emerald">
+                                        <span class="material-symbols-outlined" style="font-size:1.1rem;">table_chart</span>
+                                    </div>
+                                    <div>
+                                        <h2>Optimal Schedule (X Matrix)</h2>
+                                        <p>Decoupled maintenance slots with zero conflict</p>
+                                    </div>
+                                </div>
+                                <span class="solved-badge" id="solved-badge">
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                    <span id="solved-count">Solved</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table id="results-table">
+                                <thead>
+                                    <tr>
+                                        <th>Track</th>
+                                        <th>Section</th>
+                                        <th>Start Time (s)</th>
+                                        <th>End Time (s)</th>
+                                        <th>Duration (s)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Populated via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="action-bar">
+                            <button id="simulate-btn" class="btn btn-accent">
+                                <span class="material-symbols-outlined" style="font-size:1.1rem;">directions_subway</span>
+                                Launch SUMO Simulation
+                            </button>
+                            <button id="alternate-btn" class="btn btn-alternate">
+                                <span class="material-symbols-outlined" style="font-size:1.1rem;">compare_arrows</span>
+                                View Alternate Schedule →
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
