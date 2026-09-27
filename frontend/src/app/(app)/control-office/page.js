@@ -2,7 +2,7 @@
 
 import { useAuth } from "@/components/AuthProvider";
 import UploadBox from "@/components/UploadBox";
-import { Card, Empty, Notice, PageHeader, Spinner } from "@/components/ui";
+import { Button, Card, Empty, Notice, PageHeader, Spinner } from "@/components/ui";
 import { api } from "@/lib/api";
 import { useApi } from "@/lib/useApi";
 import { ENGINE, fmtDateTime } from "@/lib/format";
@@ -41,10 +41,25 @@ export default function ControlOfficePage() {
         ) : null}
         <div className={canEdit ? "mt-5 pt-4 border-t border-line text-[13px]" : "text-[13px]"}>
           {d.active ? (
-            <span className="text-ink-2">
-              Current: <span className="text-ink">{d.active.filename}</span> · {d.active.row_count} rows ·{" "}
-              {fmtDateTime(d.active.uploaded_at)} by {d.active.uploaded_by}
-            </span>
+            <div className="flex items-center justify-between">
+              <span className="text-ink-2">
+                Current: <span className="text-ink">{d.active.filename}</span> · {d.active.row_count} rows ·{" "}
+                {fmtDateTime(d.active.uploaded_at)} by {d.active.uploaded_by}
+              </span>
+              {canEdit && (
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={async () => {
+                    if (!confirm(`Withdraw the current ${kind} submission?`)) return;
+                    await api.post(`/coa/withdraw/${kind}`);
+                    load();
+                  }}
+                >
+                  Withdraw
+                </Button>
+              )}
+            </div>
           ) : (
             <span className="text-ink-3">Nothing uploaded yet.</span>
           )}

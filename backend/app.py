@@ -597,13 +597,27 @@ def run_and_store_plan(file_paths, plan_date, title, username, sources):
     log_path = os.path.join(solver_dir, "solver_log.txt")
     if os.path.exists(log_path):
         log = open(log_path, encoding="utf-8", errors="ignore").read()
-        m = re.search(r"Objective Value\s*:\s*([-\d.eE+]+)", log)
-        solver_info["objective"] = float(m.group(1)) if m else None
+        # For decomposed solves, sum objectives from all partitions
+        objectives = re.findall(r"Objective Value\s*:\s*([-\d.eE+]+)", log)
+        if objectives:
+            solver_info["objective"] = sum(float(v) for v in objectives)
+        else:
+            solver_info["objective"] = None
         solver_info["optimal"] = "strictly OPTIMAL" in log
-        m = re.search(r"Model size: (\d+) binary variables", log)
-        solver_info["variables"] = int(m.group(1)) if m else None
-        m = re.search(r"Model size: (\d+) constraints", log)
-        solver_info["constraints"] = int(m.group(1)) if m else None
+        # Sum variables across all partitions
+        var_matches = re.findall(r"Model size: (\d+) binary variables", log)
+        solver_info["variables"] = sum(int(v) for v in var_matches) if var_matches else None
+        con_matches = re.findall(r"Model size: (\d+) constraints", log)
+        solver_info["constraints"] = sum(int(v) for v in con_matches) if con_matches else None
+
+    # Add decomposition metadata if present
+    if index_maps.get("_decomposed"):
+        solver_info["decomposed"] = True
+        solver_info["num_partitions"] = index_maps.get("_num_partitions", 1)
+        solver_info["total_vars_before_split"] = index_maps.get("_total_vars")
+        solver_info["all_optimal"] = index_maps.get("_all_optimal", False)
+    else:
+        solver_info["decomposed"] = False
 
     buf = io.BytesIO()
     np.save(buf, X_solver)
@@ -838,6 +852,16 @@ def coa_upload(kind):
         kind, filename, rows, current_user().username, request.form.get("note")
     )
     return jsonify({"upload": up.to_dict(), "rows": len(rows)})
+
+
+@app.post("/coa/withdraw/<kind>")
+@login_required("coa")
+def coa_withdraw(kind):
+    if kind not in ("timetable", "delay"):
+        return err("Unknown file type.", 404)
+    _deactivate(CoaUpload, kind=kind)
+    db.session.commit()
+    return jsonify({"ok": True})
 
 
 @app.post("/coa/sample/<kind>")

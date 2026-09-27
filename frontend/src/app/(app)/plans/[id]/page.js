@@ -126,11 +126,13 @@ export default function PlanDetailPage() {
         />
         <Stat
           label="Optimiser"
-          value={plan.solver.optimal ? "Optimal" : plan.solver.objective != null ? "Feasible" : "—"}
+          value={plan.solver.optimal || plan.solver.all_optimal ? "Optimal" : plan.solver.objective != null ? "Feasible" : "—"}
           hint={
-            plan.solver.variables
-              ? `${plan.solver.variables} variables · cost ${Number(plan.solver.objective ?? 0).toFixed(1)}`
-              : "CPLEX MIP"
+            plan.solver.decomposed
+              ? `${plan.solver.total_vars_before_split} vars → ${plan.solver.num_partitions} partitions · cost ${Number(plan.solver.objective ?? 0).toFixed(1)}`
+              : plan.solver.variables
+                ? `${plan.solver.variables} variables · cost ${Number(plan.solver.objective ?? 0).toFixed(1)}`
+                : "CPLEX MIP"
           }
         />
       </div>
@@ -230,6 +232,15 @@ export default function PlanDetailPage() {
               <dd>{fmtDateTime(plan.created_at)} by {plan.created_by}</dd>
               <dt className="text-ink-3">Constraints</dt>
               <dd className="tnum">{plan.solver.constraints ?? "—"}</dd>
+              {plan.solver.decomposed && (
+                <>
+                  <dt className="text-ink-3">Decomposed</dt>
+                  <dd className="tnum">
+                    {plan.solver.num_partitions} partitions
+                    {plan.solver.total_vars_before_split ? ` (${plan.solver.total_vars_before_split} total vars)` : ""}
+                  </dd>
+                </>
+              )}
               <dt className="text-ink-3">Last SUMO run</dt>
               <dd>{plan.simulated_at ? fmtDateTime(plan.simulated_at) : "Not run"}</dd>
               <dt className="text-ink-3">AI rerouting</dt>

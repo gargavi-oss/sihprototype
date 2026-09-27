@@ -38,7 +38,8 @@ def build_solver_matrices(blocks, trains, delays, output_dir):
     # Verify variable limit
     num_vars = J_solver * T_solver * K_solver
     if num_vars > 1000:
-        raise ValueError(f"Too many variables for CPLEX community edition: {num_vars} > 1000")
+        print(f"[matrix_builder] WARNING: {num_vars} variables exceeds CPLEX CE limit (1000). "
+              f"Decomposition solver will be used.")
         
     # 3. Build D.npy
     D = np.zeros((J_solver, T_solver, K_solver), dtype=np.float64)
