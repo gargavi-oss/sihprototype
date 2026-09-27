@@ -40,7 +40,7 @@ function labelSprite(text, { size = 28, color = "#1b1b19", bg = "rgba(255,255,25
   return sp;
 }
 
-export default function Map3D({ network, blocks, trains, ghosts, t }) {
+export default function Map3D({ network, blocks, trains, ghosts, t, fullscreen }) {
   const mount = useRef(null);
   const live = useRef({ blocks, trains, ghosts, t });
   useEffect(() => {
@@ -364,5 +364,5 @@ export default function Map3D({ network, blocks, trains, ghosts, t }) {
     };
   }, [network]);
 
-  return <div ref={mount} className="w-full h-[560px] cursor-grab active:cursor-grabbing" aria-label="3D network view" />;
+  return <div ref={mount} className={`w-full cursor-grab active:cursor-grabbing ${fullscreen ? "h-full" : "h-[560px]"}`} aria-label="3D network view" />;
 }

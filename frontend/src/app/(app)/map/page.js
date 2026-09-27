@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
-import { Box, Map as MapIcon, Pause, Play, RotateCcw, SkipBack, SkipForward } from "lucide-react";
+import { Box, Map as MapIcon, Maximize, Minimize, Pause, Play, RotateCcw, SkipBack, SkipForward } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
 import Map2D from "@/components/map/Map2D";
 import { Button, Card, DeptTag, Empty, Notice, PageHeader, Spinner, StatusPill, cx } from "@/components/ui";
@@ -63,6 +63,15 @@ function LiveMap() {
   const [selected, setSelected] = useState(null);
   const [simBusy, setSimBusy] = useState(false);
   const [simErr, setSimErr] = useState(null);
+  const [fullscreen, setFullscreen] = useState(false);
+
+  // Escape key exits fullscreen
+  useEffect(() => {
+    if (!fullscreen) return;
+    const onKey = (e) => { if (e.key === "Escape") setFullscreen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [fullscreen]);
 
   const maxT = traj ? traj.frames.length - 1 : 119;
 
@@ -188,6 +197,15 @@ function LiveMap() {
                 </button>
               ))}
             </div>
+            <button
+              onClick={() => setFullscreen((f) => !f)}
+              className="h-9 px-3 rounded-md border border-line-strong bg-surface text-[13px] inline-flex items-center gap-1.5 hover:bg-sunken cursor-pointer"
+              aria-label={fullscreen ? "Exit fullscreen" : "Fullscreen"}
+              title={fullscreen ? "Exit fullscreen (Esc)" : "Fullscreen"}
+            >
+              {fullscreen ? <Minimize className="size-3.5" /> : <Maximize className="size-3.5" />}
+              {fullscreen ? "Exit" : "Maximize"}
+            </button>
           </div>
         }
       />
@@ -205,9 +223,29 @@ function LiveMap() {
       )}
       {simErr && <Notice tone="bad" className="mb-4">{simErr}</Notice>}
 
-      <div className="grid gap-5 xl:grid-cols-[1fr_320px] items-start">
-        <div className="min-w-0 space-y-3">
-          <div className="bg-surface border border-line rounded-lg overflow-hidden">
+      <div className={cx(
+        fullscreen
+          ? "fixed inset-0 z-50 bg-paper flex flex-col"
+          : "grid gap-5 xl:grid-cols-[1fr_320px] items-start"
+      )}>
+        {/* Fullscreen top bar — only visible in fullscreen mode */}
+        {fullscreen && (
+          <div className="flex items-center justify-between px-4 py-2 border-b border-line bg-surface shrink-0">
+            <span className="text-sm font-medium">SUMO Simulation — Plan #{planId}</span>
+            <button
+              onClick={() => setFullscreen(false)}
+              className="h-8 px-3 rounded-md border border-line-strong bg-surface text-[13px] inline-flex items-center gap-1.5 hover:bg-sunken cursor-pointer"
+              aria-label="Exit fullscreen"
+            >
+              <Minimize className="size-3.5" /> Exit Fullscreen
+            </button>
+          </div>
+        )}
+        <div className={cx("min-w-0 space-y-3", fullscreen && "flex-1 flex flex-col p-3 min-h-0")}>
+          <div className={cx(
+            "bg-surface border border-line rounded-lg overflow-hidden",
+            fullscreen && "flex-1 min-h-0"
+          )}>
             {!plan || trajLoading ? (
               <Spinner label={trajLoading ? "Loading simulation…" : "Loading…"} />
             ) : view === "2d" ? (
@@ -220,14 +258,15 @@ function LiveMap() {
                 t={t}
                 selected={selected}
                 onSelect={setSelected}
+                fullscreen={fullscreen}
               />
             ) : (
-              <Map3D network={net.data} blocks={blocks} trains={trains} ghosts={ghosts} t={t} />
+              <Map3D network={net.data} blocks={blocks} trains={trains} ghosts={ghosts} t={t} fullscreen={fullscreen} />
             )}
           </div>
 
           {/* Playback */}
-          <div className="bg-surface border border-line rounded-lg px-4 py-3">
+          <div className={cx("bg-surface border border-line rounded-lg px-4 py-3", fullscreen && "shrink-0")}>
             <div className="flex flex-wrap items-center gap-3">
               <div className="flex items-center gap-1">
                 <IconBtn label="Back 10" onClick={() => setT((v) => Math.max(0, v - 10))} icon={SkipBack} />
@@ -301,8 +340,8 @@ function LiveMap() {
           </div>
         </div>
 
-        {/* Side panels */}
-        <div className="space-y-4 min-w-0">
+        {/* Side panels — hidden in fullscreen */}
+        {!fullscreen && <div className="space-y-4 min-w-0">
           <div className="grid grid-cols-3 gap-2">
             <Mini label="Active blocks" value={activeBlocks.length} />
             <Mini label="Running" value={running} />
@@ -399,7 +438,7 @@ function LiveMap() {
               </Link>
             </div>
           )}
-        </div>
+        </div>}
       </div>
     </>
   );

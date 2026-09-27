@@ -7,7 +7,7 @@ import { PLATFORM_TRACKS, blockState, pointAlong } from "@/lib/mapModel";
 
 const PAD = 1800;
 
-export default function Map2D({ network, blocks, trains, ghosts, trails, t, selected, onSelect }) {
+export default function Map2D({ network, blocks, trains, ghosts, trails, t, selected, onSelect, fullscreen }) {
   const wrap = useRef(null);
   const svg = useRef(null);
   const [width, setWidth] = useState(900);
@@ -75,7 +75,7 @@ export default function Map2D({ network, blocks, trains, ghosts, trails, t, sele
   const height = Math.round((vb.h / vb.w) * width);
 
   return (
-    <div ref={wrap} className="relative w-full select-none" style={{ height: Math.max(360, Math.min(620, height)) }}>
+    <div ref={wrap} className="relative w-full select-none" style={fullscreen ? { height: "100%" } : { height: Math.max(360, Math.min(620, height)) }}>
       <svg
         ref={svg}
         viewBox={`${vb.x} ${vb.y} ${vb.w} ${vb.h}`}
